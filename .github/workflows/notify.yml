@@ -1,35 +1,29 @@
-name: expire notification
+name: Expire Notifier
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: "0 0 * * *"
 
-  workflow_dispatch:
-
-
 jobs:
-
   notify:
 
     runs-on: self-hosted
 
     steps:
 
-    - name: checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      - name: Python確認
+        run: python --version
 
-    - name: setup python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
+      - name: pip確認
+        run: pip --version
 
+      - name: ライブラリインストール
+        run: pip install -r requirements.txt
 
-    - name: install packages
-      run: |
-        pip install -r requirements.txt
-
-
-    - name: run notifier
-      run: |
-        python main.py
+      - name: バッチ実行
+        run: python main.py
