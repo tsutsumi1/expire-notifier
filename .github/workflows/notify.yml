@@ -1,0 +1,35 @@
+name: expire notification
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+
+
+jobs:
+
+  notify:
+
+    runs-on: self-hosted
+
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+
+    - name: setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+
+    - name: install packages
+      run: |
+        pip install -r requirements.txt
+
+
+    - name: run notifier
+      run: |
+        python main.py
