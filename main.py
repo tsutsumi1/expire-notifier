@@ -7,8 +7,12 @@ from db import (
 from mail import send_mail
 import os
 import logging
+import sys
 
 os.makedirs("logs", exist_ok=True)
+
+if sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
 
 logging.basicConfig(
     filename="logs/app.log",
@@ -32,8 +36,8 @@ def main():
             notification_type
         )
 
-        logging.info(f"{notification_type}: {len(rows)} records")
-        print(f"{notification_type}: {len(rows)} records")
+        logging.info(f"{notification_type}: {len(rows)}件")
+        print(f"{notification_type}: {len(rows)}件")
 
         if not rows:
             continue
