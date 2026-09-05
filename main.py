@@ -32,8 +32,8 @@ def main():
             notification_type
         )
 
-        logging.info(f"{notification_type}: 対象0件")
-        print(f"{notification_type}: 対象0件")
+        logging.info(f"{notification_type}: {len(rows)}件")
+        print(f"{notification_type}: {len(rows)}件")
 
         if not rows:
             continue
