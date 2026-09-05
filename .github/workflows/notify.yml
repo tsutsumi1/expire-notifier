@@ -6,24 +6,30 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+
 jobs:
+
   notify:
 
     runs-on: self-hosted
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      - name: Python確認
-        run: python --version
 
-      - name: pip確認
-        run: pip --version
+    - name: Python確認
+      run: python --version
 
-      - name: ライブラリインストール
-        run: pip install -r requirements.txt
 
-      - name: バッチ実行
-        run: python main.py
+    - name: pip確認
+      run: pip --version
+
+
+    - name: ライブラリインストール
+      run: pip install -r requirements.txt
+
+
+    - name: バッチ実行
+      run: python main.py
