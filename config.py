@@ -17,6 +17,5 @@ SMTP_CONFIG = {
     "port": int(os.getenv("SMTP_PORT")),
     "user": os.getenv("SMTP_USER"),
     "password": os.getenv("SMTP_PASSWORD"),
-    "from": os.getenv("MAIL_FROM"),
-    "to": os.getenv("MAIL_TO")
+    "from": os.getenv("MAIL_FROM")
 }
